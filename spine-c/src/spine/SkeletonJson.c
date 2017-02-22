@@ -448,7 +448,8 @@ spSkeletonData* spSkeletonJson_readSkeletonData (spSkeletonJson* self, const cha
 	FREE(self->error);
 	CONST_CAST(char*, self->error) = 0;
 	internal->linkedMeshCount = 0;
-
+	
+	//the sprintf is Affected by setlocale in NDK, so some people need to care about this  
 	oldLocale = setlocale(LC_NUMERIC, "C");
 	root = Json_create(json);
 	setlocale(LC_NUMERIC, oldLocale);
